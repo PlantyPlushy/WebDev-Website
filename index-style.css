@@ -1,0 +1,27 @@
+body {
+    font-family: monospace;
+    color: #260C1A;
+    background-color: #EDBFC6;
+}
+
+p {
+    font-size: 14px;
+}
+
+a {
+    color: #5F4842;
+    text-decoration: none;
+}
+
+#title {
+    font-family: 'Lucida Handwriting';
+}
+
+#random-area {
+    text-align: center;
+}
+
+#weekly-reading {
+    padding: 0 5%;
+}
+
