@@ -1,3 +1,5 @@
+import data from './readings.json'
+
 document.addEventListener("DOMContentLoaded", main)
 
 function main() {
@@ -10,10 +12,23 @@ function populateWeeklyReadings(){
     if (readingSection == null) {
         console.error("section doesn't exist")
     } else {
-        // Add the new reading answer
-        let newReadingElement = document.createElement("h2")
-        newReadingElement.textContent = "Test"
 
-        readingSection.appendChild(newReadingElement)
+        console.log(data)
+        // Prepare needed elements
+        let newReadingParent = document.createElement("div")
+        let title = document.createElement("h2")
+        let question = document.createElement("strong")
+        let answer = document.createElement("p")
+
+        // Add the data
+        title.textContent = "title"
+        question.textContent = "question"
+        answer.textContent = "answer"
+
+        // Append to the div
+        newReadingParent.append(title,question,answer)
+
+        // Append to the section on the website
+        readingSection.appendChild(newReadingParent)
     }
 }
