@@ -1,17 +1,27 @@
-document.addEventListener("DOMContentLoaded", main)
+document.addEventListener("DOMContentLoaded", async () => {
+    await main()
+})
 
-function main() {
-    populateWeeklyReadings()
+async function main() {
+    await populateWeeklyReadings()
 }
 
-function populateWeeklyReadings(){
-    let readingSection = document.querySelector("#weekly-reading")
+async function populateWeeklyReadings(){
+    const readingSection = document.querySelector("#weekly-reading")
+    let data = await fetchData("readings.json")
     
     if (readingSection == null) {
         console.error("section doesn't exist")
+    } else if (data == null) {
+        console.error("data is empty")
     } else {
+        populateReadingSection(data, readingSection)
+    }
+}
 
-        console.log(data)
+function populateReadingSection(jsonData, section){
+
+    for (readingObject in jsonData){
         // Prepare needed elements
         let newReadingParent = document.createElement("div")
         let title = document.createElement("h2")
@@ -19,14 +29,29 @@ function populateWeeklyReadings(){
         let answer = document.createElement("p")
 
         // Add the data
-        title.textContent = "title"
-        question.textContent = "question"
-        answer.textContent = "answer"
+        title.textContent = jsonData[readingObject].title
+        question.textContent = jsonData[readingObject].question
+        answer.textContent = jsonData[readingObject].answer
 
         // Append to the div
         newReadingParent.append(title,question,answer)
 
         // Append to the section on the website
-        readingSection.appendChild(newReadingParent)
+        section.appendChild(newReadingParent)
+    }
+}
+
+/**
+ * performs fetch request for a given filename
+ * @param {string} fileName 
+ * @returns {Promise<json>}
+ */
+async function fetchData(fileName) {
+    let promise = await fetch(`./${fileName}`)
+    if (promise.status == 200) {
+        return await promise.json()
+    } else {
+        console.error("promise status not 200")
+        return null
     }
 }
