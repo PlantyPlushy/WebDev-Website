@@ -1,5 +1,3 @@
-import data from './readings.json'
-
 document.addEventListener("DOMContentLoaded", main)
 
 function main() {
