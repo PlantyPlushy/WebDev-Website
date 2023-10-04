@@ -28,6 +28,9 @@ function populateReadingSection(jsonData, section){
         let question = document.createElement("strong")
         let answer = document.createElement("p")
 
+        // Name the class
+        newReadingParent.className = "question-answer"
+
         // Add the data
         title.textContent = jsonData[readingObject].title
         question.textContent = jsonData[readingObject].question

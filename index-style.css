@@ -1,7 +1,10 @@
 body {
     font-family: monospace;
-    color: #260C1A;
-    background-color: #EDBFC6;
+    color: #FFFFFF;
+    background-image: url('images/stardew-night-background.jpg');
+    background-color: #20213A;
+    background-size: cover;
+    background-attachment: fixed;
 }
 
 p, strong {
@@ -11,6 +14,15 @@ p, strong {
 a {
     color: #5F4842;
     text-decoration: none;
+}
+
+.question-answer {
+    background-color: #20213A;
+    padding: 1%;
+    margin: 1%;
+    border: 5px solid #20213A;
+    border-radius: 5px;
+    box-shadow: 5px 10px #FFFFFF;
 }
 
 #title {
