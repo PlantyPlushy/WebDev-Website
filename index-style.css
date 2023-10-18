@@ -1,5 +1,5 @@
 body {
-    font-family: monospace;
+    font-family: 'JetBrains Mono', monospace;
     color: #FFFFFF;
     background-image: url('images/stardew-night-background.jpg');
     background-color: #20213A;
@@ -14,6 +14,10 @@ p, strong {
 a {
     color: #5F4842;
     text-decoration: none;
+}
+a:hover {
+    color: #c39183;
+    text-decoration:underline
 }
 
 .question-answer {
@@ -36,4 +40,3 @@ a {
 #weekly-reading {
     padding: 0 5%;
 }
-
