@@ -21,6 +21,7 @@ async function populateWeeklyReadings(){
 
 function populateReadingSection(jsonData, section){
 
+    jsonData.reverse()
     for (readingObject in jsonData){
         // Prepare needed elements
         let newReadingParent = document.createElement("div")
@@ -30,6 +31,7 @@ function populateReadingSection(jsonData, section){
 
         // Name the class
         newReadingParent.className = "question-answer"
+        title.className = "readingweek-h2-title"
 
         // Add the data
         title.textContent = jsonData[readingObject].title

@@ -11,6 +11,10 @@ p, strong {
     font-size: 14px;
 }
 
+h2:not(.readingweek-h2-title) {
+    text-align: center;
+}
+
 a {
     color: #5F4842;
     text-decoration: none;
@@ -39,4 +43,13 @@ a:hover {
 
 #weekly-reading {
     padding: 0 5%;
+}
+
+#frog-img:hover {
+    rotate: 180deg;
+    transition-duration: 2s;
+}
+
+#frog-img {
+    transition-duration: 2s;
 }
