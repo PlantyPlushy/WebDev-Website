@@ -2,8 +2,25 @@ document.addEventListener("DOMContentLoaded", async () => {
     await main()
 })
 
+// Global vars for sound control
+let soundToggle = true;
+const soundFile = new Audio("sounds/funky-town-low-quality.mp3")
+
 async function main() {
     await populateWeeklyReadings()
+    document.querySelector("#title").addEventListener("click", () => initSound(soundFile))
+}
+
+async function initSound(sound){
+    if (soundToggle) {
+        await sound.play()    
+        soundToggle = !soundToggle    
+    } else {
+        // Pauses the audio and then sets the track back to the beginning
+        sound.pause()
+        sound.currentTime = 0
+        soundToggle = !soundToggle
+    }
 }
 
 async function populateWeeklyReadings(){
