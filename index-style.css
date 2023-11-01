@@ -46,7 +46,7 @@ a:hover {
 }
 
 #frog-img:hover {
-    rotate: 180deg;;
+    rotate: 359deg;;
     transition-duration: 2s;
 }
 
