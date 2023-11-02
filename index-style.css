@@ -5,6 +5,11 @@ body {
     background-color: #20213A;
     background-size: cover;
     background-attachment: fixed;
+    cursor: url("images/cat-neutral.png"), auto;
+}
+
+body.flipped {
+    cursor: url("images/cat-happy.png"), auto;
 }
 
 p, strong {

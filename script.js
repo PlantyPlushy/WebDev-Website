@@ -4,14 +4,22 @@ document.addEventListener("DOMContentLoaded", async () => {
 
 // Global vars for sound control
 let soundToggle = true;
+let animateToggle = true;
 const soundFile = new Audio("sounds/funky-town-low-quality.mp3")
 
 async function main() {
     await populateWeeklyReadings()
+    setInterval(animateCursor, 1000)
     document.querySelector("#title").addEventListener("click", () => initSound(soundFile))
 }
 
+// Flips the sprite used on the cursor every second
+function animateCursor() {
+    document.querySelector("body").classList.toggle("flipped")
+}
+
 async function initSound(sound){
+    console.log("playing sound")
     if (soundToggle) {
         await sound.play()    
         soundToggle = !soundToggle    
