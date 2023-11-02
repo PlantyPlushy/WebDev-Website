@@ -17,10 +17,10 @@ function animateCursor() {
     document.querySelector("body").classList.toggle("flipped")
 }
 
-async function initSound(sound){
+async function initSound(sound) {
     if (soundToggle) {
-        await sound.play()    
-        soundToggle = !soundToggle    
+        await sound.play()
+        soundToggle = !soundToggle
     } else {
         // Pauses the audio and then sets the track back to the beginning
         sound.pause()
@@ -29,10 +29,10 @@ async function initSound(sound){
     }
 }
 
-async function populateWeeklyReadings(){
+async function populateWeeklyReadings() {
     const readingSection = document.querySelector("#weekly-reading")
     let data = await fetchData("readings.json")
-    
+
     if (readingSection == null) {
         console.error("section doesn't exist")
     } else if (data == null) {
@@ -42,10 +42,10 @@ async function populateWeeklyReadings(){
     }
 }
 
-function populateReadingSection(jsonData, section){
+function populateReadingSection(jsonData, section) {
 
     jsonData.reverse()
-    for (readingObject in jsonData){
+    for (readingObject in jsonData) {
         // Prepare needed elements
         let newReadingParent = document.createElement("div")
         let title = document.createElement("h2")
@@ -62,7 +62,7 @@ function populateReadingSection(jsonData, section){
         answer.textContent = jsonData[readingObject].answer
 
         // Append to the div
-        newReadingParent.append(title,question,answer)
+        newReadingParent.append(title, question, answer)
 
         // Append to the section on the website
         section.appendChild(newReadingParent)
