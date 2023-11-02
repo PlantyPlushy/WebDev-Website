@@ -4,7 +4,6 @@ document.addEventListener("DOMContentLoaded", async () => {
 
 // Global vars for sound control
 let soundToggle = true;
-let animateToggle = true;
 const soundFile = new Audio("sounds/funky-town-low-quality.mp3")
 
 async function main() {
@@ -19,7 +18,6 @@ function animateCursor() {
 }
 
 async function initSound(sound){
-    console.log("playing sound")
     if (soundToggle) {
         await sound.play()    
         soundToggle = !soundToggle    
