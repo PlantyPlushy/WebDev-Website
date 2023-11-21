@@ -44,13 +44,28 @@ class Hand {
         this.handType = { type: HandType[type] }
     }
 
-    getCardNames() {
+    getCardNames(sorted = false) {
+        let cardNumbers
+        if (sorted) {
+            cardNumbers = this.getCardNumbers().sort()
+        } else {
+            cardNumbers = this.getCardNumbers()
+        }
         return [
-            Symbol[this.cards[0].symbol],
-            Symbol[this.cards[1].symbol],
-            Symbol[this.cards[2].symbol],
-            Symbol[this.cards[3].symbol],
-            Symbol[this.cards[4].symbol]
+            Symbol[cardNumbers[0]],
+            Symbol[cardNumbers[1]],
+            Symbol[cardNumbers[2]],
+            Symbol[cardNumbers[3]],
+            Symbol[cardNumbers[4]],
+        ]
+    }
+    getCardNumbers(){
+        return [
+            this.cards[0].symbol,
+            this.cards[1].symbol,
+            this.cards[2].symbol,
+            this.cards[3].symbol,
+            this.cards[4].symbol,
         ]
     }
     /**
@@ -85,8 +100,12 @@ class Player {
         let newHand = Hand.generateCards()
         return newHand
     }
-    displayHand() {
-        return this.hand.getCardNames()
+    displayHand(sort = false) {
+        if (sort) {
+            return this.hand.getCardNames(true)            
+        } else {
+            return this.hand.getCardNames()
+        }
     }
 }
 
