@@ -42,6 +42,7 @@ class Hand {
         // TODO 
         let type = "FullHouse"
         this.handType = { type: HandType[type] }
+        return this.handType.type
     }
 
     getCardNames(sorted = false) {

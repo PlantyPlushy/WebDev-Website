@@ -5,4 +5,6 @@ document.addEventListener("DOMContentLoaded", () => {
     player.generateHand()
     let area = document.querySelector("#test")
     area.textContent = player.displayHand(true)
+    area.appendChild(document.createElement("br"))
+    area.innerHTML += player.hand.DetermineHandType()
 })
