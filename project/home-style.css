@@ -3,7 +3,14 @@ body{
     justify-content: center;
     align-items: center;
     align-content: center;
+    flex-direction: column;
 }
 #sploot {
     width:50%;
+}
+#luigi-div{
+    display: flex;
+}
+#player-div{
+    display: flex;
 }
