@@ -4,6 +4,7 @@ body{
     align-items: center;
     align-content: center;
     flex-direction: column;
+    background-color: rgb(59, 126, 69)
 }
 #sploot {
     width:50%;

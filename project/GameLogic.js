@@ -1,5 +1,5 @@
 function countOccurrences(array, query){
-    var count = 0;
+    let count = 0;
     for(let i=0; i<array.length; i++)
         if (array[i]===query)
             count++;
@@ -47,7 +47,6 @@ class Hand {
     }
     // full house, three of a kind, 2 of a kind etc
     DetermineHandType() {
-        // TODO 
         let type;
         let typeNumber = 50
         let highSymbolScore = 1
@@ -167,11 +166,7 @@ class Player {
         return newHand
     }
     displayHand(sort = false) {
-        if (sort) {
-            return this.hand.getCardNames(true)
-        } else {
-            return this.hand.getCardNames()
-        }
+        return this.hand.getCardNames(sort)
     }
 }
 
@@ -180,19 +175,3 @@ class Luigi extends Player {
 }
 
 export { Luigi, Player }
-
-Object.defineProperties(Array.prototype, {
-    count: {
-        value: function(query) {
-            /* 
-               Counts number of occurrences of query in array, an integer >= 0 
-               Uses the javascript == notion of equality.
-            */
-            var count = 0;
-            for(let i=0; i<this.length; i++)
-                if (this[i]===query)
-                    count++;
-            return count;
-        }
-    }
-});
