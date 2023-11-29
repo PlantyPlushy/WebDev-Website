@@ -109,6 +109,10 @@ class Hand {
         return this.handType.type
     }
 
+    sortHand(){
+        
+    }
+
     getCardNames(sorted = false) {
         let cardNumbers
         if (sorted) {

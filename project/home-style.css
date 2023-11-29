@@ -15,3 +15,6 @@ body{
 #player-div{
     display: flex;
 }
+.player-card , .luigi-card {
+    margin: 5px;
+}
