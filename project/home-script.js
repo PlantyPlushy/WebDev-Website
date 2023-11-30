@@ -2,9 +2,24 @@ import * as GameLogic from "./GameLogic.js"
 
 let playerCardImages = []
 const player = new GameLogic.Player()
+let game = true;
+let coin = 5;
 
 document.addEventListener("DOMContentLoaded", () => {
     // let player = new GameLogic.Player()
+    setup()
+
+    while (game){
+        if (coin <= 0){
+            game = !game
+        }
+    }
+})
+
+/**
+ * Sets up all the main functions and listeners
+ */
+function setup() {
     player.generateHand()
     let area = document.querySelector("#test")
     area.textContent = player.displayHand()
@@ -31,7 +46,7 @@ document.addEventListener("DOMContentLoaded", () => {
         playerCardImages.forEach(c => setSelectedCardStyle(c, false))
         selectedCardToggle = [true, true, true, true, true]
     })
-})
+}
 
 let selectedCardToggle = [true, true, true, true, true]
 /**
