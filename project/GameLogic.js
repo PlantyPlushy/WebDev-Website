@@ -60,16 +60,13 @@ class Hand {
         let cardNumberArr = this.getCardNumbers().sort()
         for (let i = 0; i < 6; i++){
             let occurrences = countOccurrences(cardNumberArr, i + 1)
-            // console.log(occurrences)
             occurrenceArr.push(occurrences)
             if (occurrences > highTypeNumber) {
                 highSymbolScore = i + 1
             }
-            // console.log(occurrenceArr)
         }
 
         let filteredTypeNumber = occurrenceArr.filter(e => e > 1)
-        // console.log(filteredTypeNumber)
         filteredTypeNumber.sort().reverse()
         if (filteredTypeNumber.length === 2) {
             typeNumber = `${filteredTypeNumber[0]}${filteredTypeNumber[1]}`
@@ -79,7 +76,6 @@ class Hand {
             typeNumber = 0
         }
 
-        // console.log(typeNumber)
         switch (typeNumber) {
             case "50":
                 type = "FullHouse"
@@ -103,20 +99,18 @@ class Hand {
                 type = "None"
                 break;
         }
-        // console.log(type)
         this.handType = { type: HandType[type] }
         this.score = {
             type: this.handType.type,
             highestSymbol: highSymbolScore
         }
-        console.log(this.score)
         return this.handType.type
     }
 
     /**
      * 
      * @param {boolean} sorted 
-     * @returns {Array}
+     * @returns {[Number]}
      */
     getCardNames(sorted = false) {
         let cardNumbers
@@ -144,7 +138,7 @@ class Hand {
     }
     /**
      * 
-     * @param {Array} arrIndexes 
+     * @param {[Number]} arrIndexes 
      */
     replaceCard(arrIndexes){
         for (let index in arrIndexes){
@@ -180,9 +174,13 @@ class Player {
      * @returns {Hand}
      */
     generateHand() {
-        let newHand = Hand.generateCards()
-        return newHand
+        return Hand.generateCards()
     }
+    /**
+     * 
+     * @param {boolean} sort 
+     * @returns {[Number]}
+     */
     displayHand(sort = false) {
         return this.hand.getCardNames(sort)
     }

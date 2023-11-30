@@ -34,6 +34,9 @@ document.addEventListener("DOMContentLoaded", () => {
 })
 
 let selectedCardToggle = [true, true, true, true, true]
+/**
+ * adds the toggle function to each individual card
+ */
 function addPlayerClickEvent() {
     playerCardImages.forEach(c => {
         c.addEventListener("click", () => {
@@ -46,7 +49,7 @@ function addPlayerClickEvent() {
 }
 
 /**
- * 
+ * Toggles some css representing a "selected" card
  * @param {HTMLImageElement} card 
  * @param {boolean} selected 
  */
@@ -61,7 +64,7 @@ function setSelectedCardStyle(card, selected) {
 }
 
 /**
- * 
+ * Grabs the img tags from the html
  * @param {string} cardId 
  */
 function getCardsFromHTML(cardId) {
@@ -76,8 +79,8 @@ function getCardsFromHTML(cardId) {
 }
 
 /**
- * 
- * @param {Array} cardHand 
+ * Matches Card names to the img 
+ * @param {[Number]} cardHand 
  */
 function showCardFront(cardHand) {
     for (let i = 0; i < cardHand.length; i++) {
