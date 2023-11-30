@@ -26,6 +26,10 @@ const HandType = {
  * symbol -> number from 1-6
  */
 class Card {
+    /**
+     * 
+     * @param {Number} symbol 
+     */
     constructor(symbol) {
         this.symbol = symbol
     }
@@ -109,10 +113,11 @@ class Hand {
         return this.handType.type
     }
 
-    sortHand(){
-        
-    }
-
+    /**
+     * 
+     * @param {boolean} sorted 
+     * @returns {Array}
+     */
     getCardNames(sorted = false) {
         let cardNumbers
         if (sorted) {
@@ -136,6 +141,15 @@ class Hand {
             this.cards[3].symbol,
             this.cards[4].symbol,
         ]
+    }
+    /**
+     * 
+     * @param {Array} arrIndexes 
+     */
+    replaceCard(arrIndexes){
+        for (let index in arrIndexes){
+            this.cards[arrIndexes[index]] = new Card(Math.floor(Math.random() * 6) + 1)
+        }
     }
     /**
      * 
