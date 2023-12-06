@@ -104,23 +104,36 @@ async function gameAnimation() {
     }
     changeCoinCount()
 
-    sleep(2500)
+    await sleep(2500)
 
     reset()
 
 }
 
 function reset() {
+    // Reset the status bar
+    gameStatusArea.textContent = ""
 
+    // Reset the bets
+    coinBet = 0
+    document.querySelector("#coin-image-area").innerHTML = ""
+
+    // Reset luigi's cards
+    showCardFront(["Cardback", "Cardback", "Cardback", "Cardback", "Cardback"], luigiCardImages)
+    luigi.generateHand()
+
+    // Reroll player's cards
+    player.generateHand()
+    showCardFront(player.displayHand(), playerCardImages)
 }
 
 function handleBet() {
     if (coinBet < 5) {
-        let betArea = document.querySelector("#bet-area")
+        let coinImages = document.querySelector("#coin-image-area")
         let img = document.createElement("img")
         img.src = "images/coin.png"
         img.className = "coin"
-        betArea.appendChild(img)
+        coinImages.appendChild(img)
 
         coinBet++
     } else {
@@ -172,10 +185,11 @@ function getCardsFromHTML(cardId, cardImages) {
     unfilteredPlayerCardImages.forEach(e => {
         if (e instanceof HTMLDivElement) {
             // For whatever reason the image in the array is surrounded by #text
-            console.log(e.childNodes[1])
+            // console.log(e.childNodes[1])
             cardImages.push(e.childNodes[1])
         }
     })
+    console.log(cardImages)
 }
 
 /**

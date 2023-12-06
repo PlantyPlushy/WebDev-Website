@@ -174,7 +174,7 @@ class Player {
      * @returns {Hand}
      */
     generateHand() {
-        return Hand.generateCards()
+        this.hand = Hand.generateCards()
     }
     /**
      * 

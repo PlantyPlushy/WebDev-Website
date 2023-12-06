@@ -27,6 +27,12 @@ body{
     height: 50px;
     margin: 5px;
 }
+#coin-image-area{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
 .coin {
     margin: 5px 0px;
     width: 25%;
