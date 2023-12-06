@@ -10,6 +10,7 @@ let coinTotal = 5;
 let coinBet = 0
 
 const errorArea = document.querySelector("#p-error")
+const gameStatusArea = document.querySelector("#p-status")
 
 document.addEventListener("DOMContentLoaded", () => {
     // let player = new GameLogic.Player()
@@ -81,19 +82,24 @@ async function gameAnimation() {
     if (playerHandType > luigiHandType) {
         // win
         coinTotal = coinTotal + (coinBet * playerHandType)
+        gameStatusArea.textContent = `Win!     +${coinBet * playerHandType}`
     } else if (playerHandType < luigiHandType) {
         // loss
         coinTotal = coinTotal - coinBet
+        gameStatusArea.textContent = `Loss     -${coinBet}`
     } else {
         // tie
         if (player.hand.score.highestSymbol > luigi.hand.score.highestSymbol) {
             // win
             coinTotal = coinTotal + (coinBet * playerHandType)
+            gameStatusArea.textContent = `Win!     +${coinBet * playerHandType}`
         } else if (player.hand.score.highestSymbol < luigi.hand.score.highestSymbol) {
             // loss
             coinTotal = coinTotal - coinBet
+            gameStatusArea.textContent = `Loss     -${coinBet}`
         } else {
             // tie nothing happens
+            gameStatusArea.textContent = `Tie`
         }
     }
     changeCoinCount()
@@ -104,7 +110,7 @@ async function gameAnimation() {
 
 }
 
-function reset(){
+function reset() {
 
 }
 
