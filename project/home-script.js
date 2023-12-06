@@ -34,7 +34,7 @@ function setup() {
 
     addPlayerClickEvent()
 
-    showCardFront(player.displayHand())
+    showCardFront(player.displayHand(), playerCardImages)
 
     document.querySelector("#button-replace-card").addEventListener("click", handleDrawCards)
 
@@ -56,7 +56,7 @@ async function handleDrawCards() {
         console.log(toRemove);
         player.hand.replaceCard(toRemove);
         // Refreshes the card visual
-        showCardFront(player.displayHand());
+        showCardFront(player.displayHand(), playerCardImages);
         // Refreshes the css
         playerCardImages.forEach(c => setSelectedCardStyle(c, false));
         selectedCardToggle = [true, true, true, true, true];
@@ -67,11 +67,44 @@ async function handleDrawCards() {
 }
 
 async function gameAnimation() {
-    showCardFront(player.displayHand(true))
-
-    await sleep(1000)
+    await sleep(1500)
+    showCardFront(player.displayHand(true), playerCardImages)
 
     // Luigi Card flipping
+    await sleep(1500)
+    showCardFront(luigi.displayHand(true), luigiCardImages)
+
+    await sleep(1500)
+    let playerHandType = player.hand.DetermineHandType()
+    let luigiHandType = luigi.hand.DetermineHandType()
+    console.log(playerHandType)
+    console.log(luigiHandType)
+
+    if (playerHandType > luigiHandType) {
+        // win
+        console.log("win")
+        coinTotal = coinTotal + (coinBet * playerHandType)
+    } if (playerHandType < luigiHandType) {
+        // loss
+        console.log("loss")
+        coinTotal = coinTotal - coinBet
+    } else {
+        // tie
+        console.log("tie")
+        console.log(player.hand.score)
+        console.log(luigi.hand.score)
+        if (player.hand.score.highestSymbol > luigi.hand.score.highestSymbol) {
+            // win
+            coinTotal = coinTotal + (coinBet * playerHandType)
+        } else if (player.hand.score.highestSymbol < luigi.hand.score.highestSymbol) {
+            // loss
+            coinTotal = coinTotal - coinBet
+        } else {
+            // tie nothing happens
+        }
+    }
+
+    changeCoinCount()
 
 }
 
@@ -143,14 +176,14 @@ function getCardsFromHTML(cardId, cardImages) {
  * Matches Card names to the img 
  * @param {[Number]} cardHand 
  */
-function showCardFront(cardHand) {
+function showCardFront(cardHand, cardImages) {
     for (let i = 0; i < cardHand.length; i++) {
-        playerCardImages[i].src = `images/${cardHand[i]}.png`
+        cardImages[i].src = `images/${cardHand[i]}.png`
         // TODO id needs to be unique, luigi will also have an id
-        playerCardImages[i].id = i
+        cardImages[i].id = i
     }
 }
 
-function sleep(ms){
+function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms))
 }
