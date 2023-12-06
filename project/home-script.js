@@ -168,11 +168,9 @@ function addPlayerClickEvent() {
  */
 function setSelectedCardStyle(card, selected) {
     if (selected) {
-        card.style.background = "red"
-        card.style.padding = "5px"
+        card.classList.add("selected")
     } else {
-        card.style.background = ""
-        card.style.padding = ""
+        card.classList.remove("selected")
     }
 }
 

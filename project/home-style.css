@@ -1,44 +1,49 @@
-body{
+body {
     background-color: rgb(59, 126, 69);
     display: flex;
-    justify-content:center;
+    justify-content: center;
     align-items: center;
     align-items: flex-start;
 }
+
 #sploot {
-    width:50%;
+    width: 50%;
 }
 
-#p-coins{
+#p-coins {
     font-size: 25pt;
     margin: 10px 100px;
 }
 
-#bet-area{
+#bet-area {
     margin: 10px 100px;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
 }
-#button-bet{
+
+#button-bet {
     font-size: 20pt;
     width: 100px;
     height: 50px;
     margin: 5px;
 }
-#coin-image-area{
+
+#coin-image-area {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
-}
-.coin {
-    margin: 5px 0px;
-    width: 25%;
+    width: 70px ;
 }
 
-#game-area{
+.coin {
+    margin: 5px 0px;
+    width: 100%;
+}
+
+#game-area {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -46,25 +51,35 @@ body{
     flex-direction: column;
 }
 
-#button-replace-card{
+#button-replace-card {
     font-size: 20pt;
     padding: 10px;
 }
 
-#luigi-div{
+#luigi-div {
     display: flex;
-}
-#player-div{
-    display: flex;
-}
-.player-card , .luigi-card {
-    margin: 5px;
 }
 
-#p-error{
+
+#player-div {
+    display: flex;
+}
+
+.player-card img,
+.luigi-card img {
+    padding: 5px;
+    margin: 2px;
+}
+
+.player-card .selected {
+    background-color: red;
+}
+
+#p-error {
     color: rgb(109, 9, 9);
     font-size: 25pt;
 }
-#p-status{
+
+#p-status {
     font-size: 16pt;
 }
