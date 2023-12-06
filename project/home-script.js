@@ -3,6 +3,7 @@ import * as GameLogic from "./GameLogic.js"
 let playerCardImages = []
 const player = new GameLogic.Player()
 let game = true;
+
 let coin = 5;
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -35,6 +36,7 @@ function setup() {
                 toRemove.push(i)
             }
         }
+        console.log(toRemove)
         player.hand.replaceCard(toRemove)
         // Refreshes the card visual
         showCardFront(player.displayHand())
@@ -44,10 +46,16 @@ function setup() {
     })
 
     document.querySelector("#button-bet").addEventListener("click", handleBet)
+
+    changeCoinCount()
 }
 
 function handleBet(){
 
+}
+
+function changeCoinCount(){
+    document.querySelector("#coin-total").textContent = coin
 }
 
 let selectedCardToggle = [true, true, true, true, true]

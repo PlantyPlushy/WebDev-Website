@@ -8,10 +8,17 @@ body{
 #sploot {
     width:50%;
 }
+
+#p-coins{
+    font-size: 25pt;
+    margin: 10px 100px;
+}
+
 #bet-area{
     margin: 10px 100px;
 }
 #button-bet{
+    font-size: 20pt;
     width: 100px;
     height: 50px;
 }
@@ -22,6 +29,11 @@ body{
     align-items: center;
     align-content: center;
     flex-direction: column;
+}
+
+#button-replace-card{
+    font-size: 20pt;
+    padding: 10px;
 }
 
 #luigi-div{
