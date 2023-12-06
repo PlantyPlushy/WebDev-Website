@@ -2,6 +2,7 @@ import * as GameLogic from "./GameLogic.js"
 
 let playerCardImages = []
 const player = new GameLogic.Player()
+const luigi = new GameLogic.Luigi()
 let game = true;
 
 let coinTotal = 5;
@@ -25,6 +26,7 @@ document.addEventListener("DOMContentLoaded", () => {
  */
 function setup() {
     player.generateHand()
+    luigi.generateHand()
 
     getCardsFromHTML("#player-div")
 
@@ -39,7 +41,7 @@ function setup() {
     changeCoinCount()
 }
 
-function handleDrawCards() {
+async function handleDrawCards() {
     if (coinBet < 1) {
         errorArea.textContent = "You need to gamble"
     } else {
@@ -57,7 +59,18 @@ function handleDrawCards() {
         playerCardImages.forEach(c => setSelectedCardStyle(c, false));
         selectedCardToggle = [true, true, true, true, true];
         errorArea.textContent = ""
+
+        await gameAnimation()
     }
+}
+
+async function gameAnimation() {
+    showCardFront(player.displayHand(true))
+
+    await sleep(1000)
+
+    // Luigi Card flipping
+
 }
 
 function handleBet() {
@@ -134,4 +147,8 @@ function showCardFront(cardHand) {
         // TODO id needs to be unique, luigi will also have an id
         playerCardImages[i].id = i
     }
+}
+
+function sleep(ms){
+    return new Promise(resolve => setTimeout(resolve, ms))
 }
