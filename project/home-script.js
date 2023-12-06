@@ -9,11 +9,11 @@ document.addEventListener("DOMContentLoaded", () => {
     // let player = new GameLogic.Player()
     setup()
 
-    while (game){
-        if (coin <= 0){
-            game = !game
-        }
-    }
+    // while (game){
+    //     if (coin <= 0){
+    //         game = !game
+    //     }
+    // }
 })
 
 /**
@@ -21,10 +21,6 @@ document.addEventListener("DOMContentLoaded", () => {
  */
 function setup() {
     player.generateHand()
-    let area = document.querySelector("#test")
-    area.textContent = player.displayHand()
-    area.appendChild(document.createElement("br"))
-    area.innerHTML += player.hand.DetermineHandType()
 
     getCardsFromHTML("#player-div")
 
@@ -46,6 +42,12 @@ function setup() {
         playerCardImages.forEach(c => setSelectedCardStyle(c, false))
         selectedCardToggle = [true, true, true, true, true]
     })
+
+    document.querySelector("#button-bet").addEventListener("click", handleBet)
+}
+
+function handleBet(){
+
 }
 
 let selectedCardToggle = [true, true, true, true, true]

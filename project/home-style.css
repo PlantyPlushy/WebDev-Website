@@ -1,14 +1,29 @@
 body{
+    background-color: rgb(59, 126, 69);
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    align-items: flex-start;
+}
+#sploot {
+    width:50%;
+}
+#bet-area{
+    margin: 10px 100px;
+}
+#button-bet{
+    width: 100px;
+    height: 50px;
+}
+
+#game-area{
     display: flex;
     justify-content: center;
     align-items: center;
     align-content: center;
     flex-direction: column;
-    background-color: rgb(59, 126, 69)
 }
-#sploot {
-    width:50%;
-}
+
 #luigi-div{
     display: flex;
 }
