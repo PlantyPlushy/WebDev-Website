@@ -4,7 +4,10 @@ let playerCardImages = []
 const player = new GameLogic.Player()
 let game = true;
 
-let coin = 5;
+let coinTotal = 5;
+let coinBet = 0
+
+const errorArea = document.querySelector("#p-error")
 
 document.addEventListener("DOMContentLoaded", () => {
     // let player = new GameLogic.Player()
@@ -51,11 +54,22 @@ function setup() {
 }
 
 function handleBet(){
+    if (coinBet < 5) {
+        let betArea = document.querySelector("#bet-area")
+        let img = document.createElement("img")
+        img.src = "images/coin.png"
+        img.className = "coin"
+        betArea.appendChild(img)
 
+        coinBet++
+    } else {
+        errorArea.textContent = "Don't be greedy"
+    }
+    console.log(coinBet)
 }
 
 function changeCoinCount(){
-    document.querySelector("#coin-total").textContent = coin
+    document.querySelector("#coin-total").textContent = coinTotal
 }
 
 let selectedCardToggle = [true, true, true, true, true]
