@@ -77,22 +77,15 @@ async function gameAnimation() {
     await sleep(1500)
     let playerHandType = player.hand.DetermineHandType()
     let luigiHandType = luigi.hand.DetermineHandType()
-    console.log(playerHandType)
-    console.log(luigiHandType)
 
     if (playerHandType > luigiHandType) {
         // win
-        console.log("win")
         coinTotal = coinTotal + (coinBet * playerHandType)
-    } if (playerHandType < luigiHandType) {
+    } else if (playerHandType < luigiHandType) {
         // loss
-        console.log("loss")
         coinTotal = coinTotal - coinBet
     } else {
         // tie
-        console.log("tie")
-        console.log(player.hand.score)
-        console.log(luigi.hand.score)
         if (player.hand.score.highestSymbol > luigi.hand.score.highestSymbol) {
             // win
             coinTotal = coinTotal + (coinBet * playerHandType)
@@ -103,8 +96,15 @@ async function gameAnimation() {
             // tie nothing happens
         }
     }
-
     changeCoinCount()
+
+    sleep(2500)
+
+    reset()
+
+}
+
+function reset(){
 
 }
 
