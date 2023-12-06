@@ -32,28 +32,35 @@ function setup() {
 
     showCardFront(player.displayHand())
 
-    document.querySelector("#button-replace-card").addEventListener("click", () => {
-        let toRemove = []
-        for (let i in selectedCardToggle) {
-            if (!selectedCardToggle[i]) {
-                toRemove.push(i)
-            }
-        }
-        console.log(toRemove)
-        player.hand.replaceCard(toRemove)
-        // Refreshes the card visual
-        showCardFront(player.displayHand())
-        // Refreshes the css
-        playerCardImages.forEach(c => setSelectedCardStyle(c, false))
-        selectedCardToggle = [true, true, true, true, true]
-    })
+    document.querySelector("#button-replace-card").addEventListener("click", handleDrawCards)
 
     document.querySelector("#button-bet").addEventListener("click", handleBet)
 
     changeCoinCount()
 }
 
-function handleBet(){
+function handleDrawCards() {
+    if (coinBet < 1) {
+        errorArea.textContent = "You need to gamble"
+    } else {
+        let toRemove = [];
+        for (let i in selectedCardToggle) {
+            if (!selectedCardToggle[i]) {
+                toRemove.push(i);
+            }
+        }
+        console.log(toRemove);
+        player.hand.replaceCard(toRemove);
+        // Refreshes the card visual
+        showCardFront(player.displayHand());
+        // Refreshes the css
+        playerCardImages.forEach(c => setSelectedCardStyle(c, false));
+        selectedCardToggle = [true, true, true, true, true];
+        errorArea.textContent = ""
+    }
+}
+
+function handleBet() {
     if (coinBet < 5) {
         let betArea = document.querySelector("#bet-area")
         let img = document.createElement("img")
@@ -68,7 +75,7 @@ function handleBet(){
     console.log(coinBet)
 }
 
-function changeCoinCount(){
+function changeCoinCount() {
     document.querySelector("#coin-total").textContent = coinTotal
 }
 
