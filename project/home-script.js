@@ -1,6 +1,7 @@
 import * as GameLogic from "./GameLogic.js"
 
 let playerCardImages = []
+let luigiCardImages = []
 const player = new GameLogic.Player()
 const luigi = new GameLogic.Luigi()
 let game = true;
@@ -28,7 +29,8 @@ function setup() {
     player.generateHand()
     luigi.generateHand()
 
-    getCardsFromHTML("#player-div")
+    getCardsFromHTML("#player-div", playerCardImages)
+    getCardsFromHTML("#luigi-div", luigiCardImages)
 
     addPlayerClickEvent()
 
@@ -126,13 +128,13 @@ function setSelectedCardStyle(card, selected) {
  * Grabs the img tags from the html
  * @param {string} cardId 
  */
-function getCardsFromHTML(cardId) {
+function getCardsFromHTML(cardId, cardImages) {
     let unfilteredPlayerCardImages = document.querySelector(cardId).childNodes
     unfilteredPlayerCardImages.forEach(e => {
         if (e instanceof HTMLDivElement) {
             // For whatever reason the image in the array is surrounded by #text
             console.log(e.childNodes[1])
-            playerCardImages.push(e.childNodes[1])
+            cardImages.push(e.childNodes[1])
         }
     })
 }
