@@ -85,8 +85,8 @@ async function gameAnimation() {
         gameStatusArea.textContent = `Win!     +${coinBet * playerHandType}`
     } else if (playerHandType < luigiHandType) {
         // loss
-        coinTotal = coinTotal - coinBet
-        gameStatusArea.textContent = `Loss     -${coinBet}`
+        coinTotal = coinTotal - (coinBet * luigiHandType)
+        gameStatusArea.textContent = `Loss     -${coinBet * luigiHandType}`
     } else {
         // tie
         if (player.hand.score.highestSymbol > luigi.hand.score.highestSymbol) {
@@ -95,8 +95,8 @@ async function gameAnimation() {
             gameStatusArea.textContent = `Win!     +${coinBet * playerHandType}`
         } else if (player.hand.score.highestSymbol < luigi.hand.score.highestSymbol) {
             // loss
-            coinTotal = coinTotal - coinBet
-            gameStatusArea.textContent = `Loss     -${coinBet}`
+            coinTotal = coinTotal - (coinBet * luigiHandType)
+            gameStatusArea.textContent = `Loss     -${coinBet * luigiHandType}`
         } else {
             // tie nothing happens
             gameStatusArea.textContent = `Tie`
@@ -106,8 +106,13 @@ async function gameAnimation() {
 
     await sleep(2500)
 
-    reset()
-
+    if (coinTotal < 1) {
+        errorArea.textContent = "YOU LOSE >:) \n Reload page and try again"
+        document.querySelector("#button-bet").disabled = true
+        document.querySelector("#button-replace-card").disabled = true
+    } else {
+        reset()
+    }
 }
 
 function reset() {
