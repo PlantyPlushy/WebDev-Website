@@ -6,6 +6,10 @@ body {
     align-items: flex-start;
 }
 
+img {
+    image-rendering: pixelated;
+}
+
 #sploot {
     width: 50%;
 }
